@@ -1,0 +1,145 @@
+python3 tools/demo.py --binary build/fwctl
+Initialize Flash
+{
+  "result": "ok",
+  "flash_size": 8704
+}
+Provision confirmed version 1
+{
+  "result": "ok",
+  "decision": "confirmed",
+  "reason": "provisioned",
+  "slot": 0,
+  "version": 1,
+  "length": 67,
+  "payload_crc": 947688836,
+  "generation": 1,
+  "operations": 57
+}
+Stage version 2
+{
+  "result": "ok",
+  "decision": "staged",
+  "reason": "candidate_verified",
+  "slot": 1,
+  "version": 2,
+  "length": 67,
+  "payload_crc": 1987748812,
+  "generation": 2,
+  "operations": 57
+}
+Select version 2 for one trial
+{
+  "result": "ok",
+  "decision": "trial",
+  "reason": "candidate_ready",
+  "slot": 1,
+  "version": 2,
+  "length": 67,
+  "payload_crc": 1987748812,
+  "generation": 3,
+  "operations": 16
+}
+No confirmation: next boot rolls back
+{
+  "result": "ok",
+  "decision": "confirmed",
+  "reason": "unconfirmed_trial",
+  "slot": 0,
+  "version": 1,
+  "length": 67,
+  "payload_crc": 947688836,
+  "generation": 4,
+  "operations": 16
+}
+Stage version 2 again
+{
+  "result": "ok",
+  "decision": "staged",
+  "reason": "candidate_verified",
+  "slot": 1,
+  "version": 2,
+  "length": 67,
+  "payload_crc": 1987748812,
+  "generation": 5,
+  "operations": 57
+}
+Select version 2 for trial
+{
+  "result": "ok",
+  "decision": "trial",
+  "reason": "candidate_ready",
+  "slot": 1,
+  "version": 2,
+  "length": 67,
+  "payload_crc": 1987748812,
+  "generation": 6,
+  "operations": 16
+}
+Application confirms version 2
+{
+  "result": "ok",
+  "decision": "confirmed",
+  "reason": "application_confirmed",
+  "slot": 1,
+  "version": 2,
+  "length": 67,
+  "payload_crc": 1987748812,
+  "generation": 7,
+  "operations": 16
+}
+Version 2 is now stable
+{
+  "result": "ok",
+  "decision": "confirmed",
+  "reason": "stable",
+  "slot": 1,
+  "version": 2,
+  "length": 67,
+  "payload_crc": 1987748812,
+  "generation": 7,
+  "operations": 0
+}
+Interrupted version 3 write
+{
+  "result": "ok",
+  "metadata_valid": true,
+  "generation": 7,
+  "metadata_page": 0,
+  "active": 1,
+  "active_version": 2,
+  "pending": null,
+  "pending_version": 0,
+  "attempted": false,
+  "confirmed_valid": true,
+  "candidate_valid": false,
+  "slots": [
+    {
+      "slot": 0,
+      "valid": true,
+      "version": 1,
+      "length": 67,
+      "payload_crc": 947688836
+    },
+    {
+      "slot": 1,
+      "valid": true,
+      "version": 2,
+      "length": 67,
+      "payload_crc": 1987748812
+    }
+  ]
+}
+{"simulated_power_loss_exit": 86}
+Restart still selects confirmed version 2
+{
+  "result": "ok",
+  "decision": "confirmed",
+  "reason": "stable",
+  "slot": 1,
+  "version": 2,
+  "length": 67,
+  "payload_crc": 1987748812,
+  "generation": 7,
+  "operations": 0
+}

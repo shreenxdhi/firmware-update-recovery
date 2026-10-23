@@ -1,0 +1,95 @@
+{
+  "passed": true,
+  "scenarios": [
+    {
+      "name": "invalid_fault_options_do_not_mutate",
+      "passed": true,
+      "wall_seconds": 0.487
+    },
+    {
+      "name": "blank_recovery_and_exclusive_create",
+      "passed": true,
+      "wall_seconds": 0.041
+    },
+    {
+      "name": "confirmed_update",
+      "passed": true,
+      "wall_seconds": 0.097
+    },
+    {
+      "name": "unconfirmed_trial_rolls_back",
+      "passed": true,
+      "wall_seconds": 0.08
+    },
+    {
+      "name": "confirmation_requires_matching_trial",
+      "passed": true,
+      "wall_seconds": 0.126
+    },
+    {
+      "name": "reject_packages_before_mutation",
+      "passed": true,
+      "wall_seconds": 0.155
+    },
+    {
+      "name": "pending_update_is_not_overwritten",
+      "passed": true,
+      "wall_seconds": 0.058
+    },
+    {
+      "name": "repeated_updates_reuse_both_slots",
+      "passed": true,
+      "wall_seconds": 0.184
+    },
+    {
+      "name": "candidate_corruption_falls_back",
+      "passed": true,
+      "wall_seconds": 0.056
+    },
+    {
+      "name": "confirmed_corruption_enters_recovery",
+      "passed": true,
+      "wall_seconds": 0.055
+    },
+    {
+      "name": "metadata_corruption_fallback_and_recovery",
+      "passed": true,
+      "wall_seconds": 0.085
+    },
+    {
+      "name": "image_identity_must_match_metadata",
+      "passed": true,
+      "wall_seconds": 0.056
+    },
+    {
+      "name": "file_size_and_process_lock",
+      "passed": true,
+      "wall_seconds": 0.053
+    },
+    {
+      "name": "image_capacity_and_padding",
+      "passed": true,
+      "wall_seconds": 0.181
+    },
+    {
+      "name": "metadata_generation_cannot_wrap",
+      "passed": true,
+      "wall_seconds": 0.061
+    },
+    {
+      "name": "ambiguous_metadata_is_rejected",
+      "passed": true,
+      "wall_seconds": 0.041
+    },
+    {
+      "name": "reprovision_is_not_an_erase_command",
+      "passed": true,
+      "wall_seconds": 0.041
+    }
+  ],
+  "campaigns": [],
+  "power_cuts_tested": 0,
+  "io_failures_tested": 0,
+  "binary_sha256": "169a3747684fdcec56680998695665dac24d5dac2e6adb67d5e90f02981d4c01",
+  "scope": "File-backed prefix-tear Flash model; not actual MCU power-loss or security validation"
+}

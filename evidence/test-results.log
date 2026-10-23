@@ -1,0 +1,66 @@
+$ make clean
+rm -rf build
+$ make test
+mkdir -p build
+clang -std=c11 -Wall -Wextra -Werror -Wconversion -Wpedantic -g -O1 -fsanitize=address,undefined -Iinclude src/format.c src/flash.c tests/test_core.c -o build/test-core
+./build/test-core
+PASS crc_reference
+PASS endian_boundaries
+PASS flash_rules
+PASS metadata_roundtrip
+PASS every_metadata_bit_corruption
+PASS metadata_semantic_validation
+PASS metadata_commit_and_fallback
+PASS generation_exhaustion
+PASS header_validation
+9 C test groups passed.
+clang -std=c11 -Wall -Wextra -Werror -Wconversion -Wpedantic -g -O2 -Iinclude src/format.c src/flash.c src/main.c -o build/fwctl
+python3 tests/integration.py --binary build/fwctl --report build/integration-results.json
+PASS invalid_fault_options_do_not_mutate
+PASS blank_recovery_and_exclusive_create
+PASS confirmed_update
+PASS unconfirmed_trial_rolls_back
+PASS confirmation_requires_matching_trial
+PASS reject_packages_before_mutation
+PASS pending_update_is_not_overwritten
+PASS repeated_updates_reuse_both_slots
+PASS candidate_corruption_falls_back
+PASS confirmed_corruption_enters_recovery
+PASS metadata_corruption_fallback_and_recovery
+PASS image_identity_must_match_metadata
+PASS file_size_and_process_lock
+PASS image_capacity_and_padding
+PASS metadata_generation_cannot_wrap
+PASS ambiguous_metadata_is_rejected
+PASS reprovision_is_not_an_erase_command
+PASS cut provision campaign 285
+PASS cut stage campaign 285
+PASS cut trial campaign 80
+PASS cut confirm campaign 80
+PASS cut rollback campaign 80
+PASS io provision campaign 285
+PASS io stage campaign 285
+PASS io trial campaign 80
+PASS io confirm campaign 80
+PASS io rollback campaign 80
+Scenarios: 17/17; campaigns: 10/10; power cuts: 810; returned errors: 810
+clang -std=c11 -Wall -Wextra -Werror -Wconversion -Wpedantic -g -O1 -fsanitize=address,undefined -Iinclude src/format.c src/flash.c src/main.c -o build/fwctl-sanitized
+python3 tests/integration.py --binary build/fwctl-sanitized --smoke-only --report build/sanitizer-results.json
+PASS invalid_fault_options_do_not_mutate
+PASS blank_recovery_and_exclusive_create
+PASS confirmed_update
+PASS unconfirmed_trial_rolls_back
+PASS confirmation_requires_matching_trial
+PASS reject_packages_before_mutation
+PASS pending_update_is_not_overwritten
+PASS repeated_updates_reuse_both_slots
+PASS candidate_corruption_falls_back
+PASS confirmed_corruption_enters_recovery
+PASS metadata_corruption_fallback_and_recovery
+PASS image_identity_must_match_metadata
+PASS file_size_and_process_lock
+PASS image_capacity_and_padding
+PASS metadata_generation_cannot_wrap
+PASS ambiguous_metadata_is_rejected
+PASS reprovision_is_not_an_erase_command
+Scenarios: 17/17; campaigns: 0/0; power cuts: 0; returned errors: 0
